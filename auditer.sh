@@ -64,11 +64,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 runprog "curl" "-vv http://$hostip:443" # Access an https port through http protocol
-runprog "nmap" "-sT --top-ports 5000 $host"
+runprog "nmap" "-sT --top-ports 100 $host"
 runprog "testssl" "$host"
-runprog "whatweb" "$host"
+#runprog "whatweb" "$host"
 runprog "nikto" "-host $host"
 runprog "dirb" "http://$host" "/usr/share/wordlists/dirb/big.txt"
-runprog "dirb" "https://$host" "/usr/share/wordlists/dirb/big.txt"
+#runprog "dirb" "https://$host" "/usr/share/wordlists/dirb/big.txt"
 
 # EOF
