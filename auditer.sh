@@ -48,7 +48,7 @@ print_loc "[+] Using host: $REDCOL$BOLDCOL$host$NOCOL"
 print_loc "[+] Host's IP:  $REDCOL$BOLDCOL$hostip$NOCOL"
 
 
-print_loc "[+] Information gathering, clicky clicky... $hostip"
+print_loc "[+] Information gathering, clicky clicky..."
 if [[ -n "$hostip" ]]; then
  print_loc "[+] Open ports: "
  print_loc "[+]\t $UNDERCOL""https://www.shodan.io/host/$hostip$NOCOL"
@@ -63,12 +63,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
  ask=true
 fi
 
-runprog "curl" "-vv http://$hostip:443" # Access an https port through http protocol
+# ADD YOUR PROGRAMS TO RUN HERE, FORMAT:
+# runprog "program_name" "arguments $host"
+runprog "curl" "-vv http://$hostip:443" 
 runprog "nmap" "-sT --top-ports 100 $host"
 runprog "testssl" "$host"
 #runprog "whatweb" "$host"
 runprog "nikto" "-host $host"
 runprog "dirb" "http://$host" "/usr/share/wordlists/dirb/big.txt"
 #runprog "dirb" "https://$host" "/usr/share/wordlists/dirb/big.txt"
+# END OF PROGRAMS SECTION
 
-# EOF
+
