@@ -1,7 +1,7 @@
-# curl -vv http://$hostip:443
-curl -I http://$host
-nmap -sT --top-ports 100 $host
+curl -vv 'http://$hostip:443' --timeout 10
+curl -I 'https://$host' --timeout 10
+#nmap -sT --top-ports 100 $host
 # whatweb http://$hostip
-wafw00f -v $host
-# nikto -host $host
+wafw00f -v https://$host
+# nikto -host $hostip
 # dirb http://$host /usr/share/wordlists/dirb/big.txt
